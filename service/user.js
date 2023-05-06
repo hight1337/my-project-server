@@ -10,8 +10,7 @@ class UserService {
   async signUp(email, password, firstName, lastName) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
-      // TODO: Change for custom error
-      throw new Error(`User with email ${email} already exists`);
+      return next(ApiError.BadRequest("User with this email already exists"));
     }
 
     const hashPassword = await bcrypt.hash(password, 3);

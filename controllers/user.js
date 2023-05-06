@@ -6,9 +6,9 @@ class UserController {
     try {
       const validationErrors = validationResult(req);
       if (!validationErrors.isEmpty()) {
-        return res
-          .status(400)
-          .json({ message: "Validation error", validationErrors });
+        return next(
+          ApiError.BadRequest("Validation error", validationErrors.array())
+        );
       }
       const { email, password, firstName, lastName } = req.body;
       const userData = await userService.signUp(
