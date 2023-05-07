@@ -12,11 +12,11 @@ const {
 // AUTH
 router.post("/auth/sign-up", signUpValidation, userController.signUp);
 
-router.post("/auth/sign-in", signInValidation);
+router.post("/auth/sign-in", signInValidation, userController.signIn);
 
-router.post("/auth/sign-out");
+router.post("/auth/sign-out", userController.signOut);
 
-router.get("/auth/refresh");
+router.get("/auth/refresh", userController.refresh);
 
 // POSTS
 // Logic here...

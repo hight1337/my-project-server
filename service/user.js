@@ -45,7 +45,7 @@ class UserService {
     return { ...tokens, user: userDto };
   }
 
-  async signOut() {
+  async signOut(refreshToken) {
     const token = await tokenService.removeToken(refreshToken);
     return token;
   }
