@@ -32,11 +32,11 @@ class UserService {
   async signIn(email, password) {
     const user = await UserModel.findOne({ email });
     if (!user) {
-      throw ApiError.BadRequest("Пользователь с таким email не найден");
+      throw ApiError.BadRequest("User with this email does not exist");
     }
     const isPassEquals = await bcrypt.compare(password, user.password);
     if (!isPassEquals) {
-      throw ApiError.BadRequest("Неверный пароль");
+      throw ApiError.BadRequest("Email or password is incorrect");
     }
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });
