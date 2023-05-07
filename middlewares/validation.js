@@ -26,6 +26,16 @@ const signUpValidation = [
     .withMessage("Last name must be string"),
 ];
 
+const signInValidation = [
+  body("email")
+    .isEmail()
+    .withMessage("Invalid email")
+    .notEmpty()
+    .withMessage("Email is required"),
+  body("password").notEmpty().withMessage("Password is required"),
+];
+
 module.exports = {
   signUpValidation,
+  signInValidation,
 };
