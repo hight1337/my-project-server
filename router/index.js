@@ -1,8 +1,7 @@
 const Router = require("express").Router;
 const userController = require("../controllers/user");
 const router = new Router();
-const { body } = require("express-validator");
-
+const authMiddleware = require("../middlewares/auth-middleware");
 // VALIDATIONS
 const {
   signUpValidation,
@@ -16,7 +15,10 @@ router.post("/auth/sign-in", signInValidation, userController.signIn);
 
 router.post("/auth/sign-out", userController.signOut);
 
-router.get("/auth/refresh", userController.refresh);
+router.get("/refresh", userController.refresh);
+
+// USER
+router.get("/me", authMiddleware, userController.getMe);
 
 // POSTS
 // Logic here...

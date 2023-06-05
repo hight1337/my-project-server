@@ -66,6 +66,16 @@ class UserService {
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto };
   }
+
+  async getUserById(id) {
+    try {
+      const user = await UserModel.findById(id);
+      const userDto = new UserDto(user);
+      return userDto;
+    } catch (error) {
+      throw ApiError.BadRequest("User not found");
+    }
+  }
 }
 
 module.exports = new UserService();
