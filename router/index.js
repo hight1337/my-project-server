@@ -1,5 +1,6 @@
 const Router = require("express").Router;
 const userController = require("../controllers/user");
+const postController = require("../controllers/post");
 const router = new Router();
 const authMiddleware = require("../middlewares/auth-middleware");
 // VALIDATIONS
@@ -21,5 +22,11 @@ router.get("/refresh", userController.refresh);
 router.get("/me", authMiddleware, userController.getMe);
 
 // POSTS
-// Logic here...
+router.post("/posts", authMiddleware, postController.createPost);
+router.get("/posts", authMiddleware, postController.getAll);
+router.get("/posts/:id", authMiddleware, postController.getPostById);
+router.get("/users/:id/posts", authMiddleware, postController.getUsersPosts);
+router.patch("/posts/:id", authMiddleware, postController.updatePost);
+router.delete("/posts/:id", authMiddleware, postController.deletePost);
+
 module.exports = router;
