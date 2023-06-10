@@ -73,7 +73,7 @@ class UserService {
       const userDto = new UserDto(user);
       return userDto;
     } catch (error) {
-      throw ApiError.BadRequest("User not found");
+      throw ApiError.NotFound("User not found");
     }
   }
 }

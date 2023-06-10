@@ -14,7 +14,7 @@ router.post("/auth/sign-up", signUpValidation, userController.signUp);
 
 router.post("/auth/sign-in", signInValidation, userController.signIn);
 
-router.post("/auth/sign-out", userController.signOut);
+router.post("/sign-out", userController.signOut);
 
 router.get("/refresh", userController.refresh);
 
@@ -25,7 +25,7 @@ router.get("/me", authMiddleware, userController.getMe);
 router.post("/posts", authMiddleware, postController.createPost);
 router.get("/posts", authMiddleware, postController.getAll);
 router.get("/posts/:id", authMiddleware, postController.getPostById);
-router.get("/users/:id/posts", authMiddleware, postController.getUsersPosts);
+router.get("/posts/my", authMiddleware, postController.getUsersPosts);
 router.patch("/posts/:id", authMiddleware, postController.updatePost);
 router.delete("/posts/:id", authMiddleware, postController.deletePost);
 
