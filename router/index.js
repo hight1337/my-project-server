@@ -19,11 +19,11 @@ router.get("/refresh", userController.refresh);
 router.get("/me", authMiddleware, userController.getMe);
 
 // POSTS
-router.post("/posts", authMiddleware, postController.createPost);
+router.post("/post/create", authMiddleware, postController.createPost);
 router.get("/posts", authMiddleware, postController.getAll);
-router.get("/posts/:id", authMiddleware, postController.getPostById);
-router.get("/posts/my", authMiddleware, postController.getUsersPosts);
-router.patch("/posts/:id", authMiddleware, postController.updatePost);
-router.delete("/posts/:id", authMiddleware, postController.deletePost);
+router.get("/post/:id", authMiddleware, postController.getPostById);
+router.get("/my/posts", authMiddleware, postController.getUsersPosts);
+router.patch("/post/update/:id", authMiddleware, postController.updatePost);
+router.delete("/post/delete/:id", authMiddleware, postController.deletePost);
 
 module.exports = router;
