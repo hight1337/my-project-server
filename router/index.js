@@ -10,12 +10,9 @@ const {
 } = require("../middlewares/validation");
 
 // AUTH
-router.post("/auth/sign-up", signUpValidation, userController.signUp);
-
-router.post("/auth/sign-in", signInValidation, userController.signIn);
-
+router.post("/sign-up", signUpValidation, userController.signUp);
+router.post("/sign-in", signInValidation, userController.signIn);
 router.post("/sign-out", userController.signOut);
-
 router.get("/refresh", userController.refresh);
 
 // USER
