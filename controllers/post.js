@@ -19,7 +19,7 @@ class PostController {
 
   async getAll(req, res, next) {
     try {
-      const { limit = 10, page = 0 } = req.query;
+      const { limit = 100, page = 0 } = req.query;
 
       const posts = await PostService.getPosts(limit, page);
       return res.json(posts);
@@ -29,7 +29,7 @@ class PostController {
   }
 
   async getUsersPosts(req, res, next) {
-    const { limit = 10, page = 0 } = req.query;
+    const { limit = 50, page = 0 } = req.query;
     const userId = req.user.id;
     try {
       const posts = await PostService.getUsersPosts(userId, limit, page);
